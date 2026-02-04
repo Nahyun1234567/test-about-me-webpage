@@ -2,39 +2,29 @@
 const correctAnswers = {
     q1: "2",   // 김나현의 생일
     q2: "3",   // 좋아하는 음식
-    q3: "3",   // 연애 안정감 조건 (ㄱ, ㄷ)
-    q4: "3",   // 좋아하는 계절
-    q5: "1",   // 취미
-    q6: "4",   // 처음 만난 장소
-    q7: "3",   // 좋아하는 색깔
-    q8: "1",   // 싫어하는 것
-    q9: "2",   // 좋아하는 동물
-    q10: "1",  // 혈액형
-    q11: "2",  // 기념일
-    q12: "2",  // 말버릇
-    q13: "2",  // 카페 음료
-    q14: "2",  // 발 사이즈
-    q15: "1",  // 영화 장르
-    q16: "2",  // 스트레스 받을 때
-    q17: "1",  // 좋아하는 라면
-    q18: "4",  // 잠버릇
-    q19: "3",  // 아이스크림 맛
-    q20: "4",  // 아침형/저녁형
-    q21: "1",  // 좋아하는 과일
-    q22: "2",  // 키
-    q23: "4",  // 좋아하는 꽃
-    q24: "1",  // 듣고 싶은 말
-    q25: "1",  // 여행가고 싶은 나라
-    q26: "1",  // 좋아하는 반찬
-    q27: "1",  // 별명
-    q28: "3",  // 화났을 때 행동
-    q29: "4",  // 소중하게 생각하는 것
-    q30: "4"   // 류동윤에게 바라는 것
+    q3: "3",   // 서운함 느꼈을 가능성
+    q4: "3",   // 민감하게 반응
+    q5: "1",   // 정서적 만족도
+    q6: "4",   // 간접적 애정 표현
+    q7: "1",   // 민감하게 반응
+    q8: "4",   // 삐졌을 때 1차 반응
+    q9: "2",   // 기억에 오래 남을 행동
+    q10: "3",  // 연애에서 중요한 요소
+    q11: "1",  // "나 안 화났어" 해석
+    q12: "4",  // 연애에서 불안을 느끼는 경우
+    q13: "3",  // 가장 기분 좋아질 가능성
+    q14: "3",  // 오래 함께하고 싶은 조건
+    q15: "4",  // 힘들어 보일 때 적절한 행동
+    q16: "3",  // 자주 장난치는 이유
+    q17: "1",  // 서운함 느꼈을 때 해결 방식
+    q18: "3",  // 발 사이즈
+    q19: "1",  // 화났을 때 행동
+    q20: "4"   // 류동윤에게 바라는 것
 };
 
 // 등급 메시지
 function getGradeMessage(score) {
-    const percentage = (score / 30) * 100;
+    const percentage = (score / 20) * 100;
     if (percentage === 100) {
         return "1등급 (만점)\n당신은 200일 동안 성실하고 꾸준하게 김나현을 관찰하고 이해해온 사람입니다. 단순한 기억력이 아니라, 일상 속 디테일까지 자연스럽게 체화한 수준입니다. 김나현 전문가로 인정합니다.";
     } else if (percentage >= 90) {
@@ -61,7 +51,7 @@ document.getElementById('examForm').addEventListener('submit', function(e) {
     let unanswered = [];
     
     // 각 문제 채점
-    for (let i = 1; i <= 30; i++) {
+    for (let i = 1; i <= 20; i++) {
         const questionName = `q${i}`;
         const selectedOption = document.querySelector(`input[name="${questionName}"]:checked`);
         
@@ -88,8 +78,8 @@ document.getElementById('examForm').addEventListener('submit', function(e) {
     
     resultContent.innerHTML = `
         <p><strong>${studentName}</strong>님의 성적</p>
-        <span class="score">${score} / 30</span>
-        <p>정답률: ${((score / 30) * 100).toFixed(1)}%</p>
+        <span class="score">${score} / 20</span>
+        <p>정답률: ${((score / 20) * 100).toFixed(1)}%</p>
         <div class="message">${getGradeMessage(score)}</div>
     `;
     
