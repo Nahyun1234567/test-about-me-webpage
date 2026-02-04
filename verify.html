@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>본인확인 - 200일 기념 류동윤 모의고사</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .verify-container {
+            max-width: 500px;
+            margin: 100px auto;
+            background-color: #fff;
+            border: 2px solid #333;
+            border-radius: 10px;
+            padding: 50px 40px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .verify-title {
+            font-family: 'Nanum Myeongjo', serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .verify-subtitle {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 40px;
+        }
+
+        .verify-icon {
+            font-size: 60px;
+            margin-bottom: 20px;
+        }
+
+        .verify-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .input-group {
+            text-align: left;
+        }
+
+        .input-group label {
+            display: block;
+            font-size: 14px;
+            font-weight: 500;
+            color: #333;
+            margin-bottom: 8px;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+
+        .input-group input:focus {
+            outline: none;
+            border-color: #ff6b6b;
+        }
+
+        .verify-btn {
+            padding: 15px 40px;
+            font-size: 18px;
+            font-weight: 700;
+            color: #fff;
+            background: linear-gradient(135deg, #ff6b6b 0%, #ff8e8e 100%);
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
+            margin-top: 20px;
+        }
+
+        .verify-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 107, 107, 0.5);
+        }
+
+        .error-message {
+            color: #ff4444;
+            font-size: 14px;
+            margin-top: 10px;
+            display: none;
+        }
+
+        .error-message.show {
+            display: block;
+            animation: shake 0.5s ease;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            20%, 60% { transform: translateX(-5px); }
+            40%, 80% { transform: translateX(5px); }
+        }
+    </style>
+</head>
+<body>
+    <div class="verify-container">
+        <div class="verify-icon">🔒</div>
+        <h1 class="verify-title">본인확인</h1>
+        <p class="verify-subtitle">200일 기념 모의고사에 응시하기 전<br>본인확인이 필요합니다</p>
+
+        <form class="verify-form" onsubmit="verifyIdentity(event)">
+            <div class="input-group">
+                <label for="name">이름을 입력하세요</label>
+                <input type="text" id="name" placeholder="본인의 이름을 입력하세요" required>
+            </div>
+
+            <div class="input-group">
+                <label for="anniversary">수험번호를 입력하시오 (힌트:YYYYMMDD)</label>
+                <input type="text" id="anniversary" placeholder="예: 20020924" maxlength="8" required>
+            </div>
+
+            <p class="error-message" id="errorMsg">❌ 정보가 일치하지 않습니다. 다시 확인해주세요</p>
+
+            <button type="submit" class="verify-btn">제출하기→</button>
+        </form>
+    </div>
+
+    <script>
+        // 본인확인 정보 설정 (실제 정보로 수정하세요!)
+        const CORRECT_NAME = "류동윤";
+        const CORRECT_ANNIVERSARY = "20250722"; // 예: 7월 18일이면 0718
+
+        function verifyIdentity(event) {
+            event.preventDefault();
+            
+            const name = document.getElementById('name').value.trim();
+            const anniversary = document.getElementById('anniversary').value.trim();
+            const errorMsg = document.getElementById('errorMsg');
+
+            if (name === CORRECT_NAME && anniversary === CORRECT_ANNIVERSARY) {
+                // 본인확인 성공
+                sessionStorage.setItem('verified', 'true');
+                sessionStorage.setItem('studentName', name);
+                
+                // 성공 애니메이션 후 페이지 이동
+                document.querySelector('.verify-container').style.transform = 'scale(0.95)';
+                document.querySelector('.verify-container').style.opacity = '0.5';
+                
+                setTimeout(() => {
+                    window.location.href = 'index.html';
+                }, 500);
+            } else {
+                // 본인확인 실패
+                errorMsg.classList.add('show');
+                
+                // 입력 필드 흔들기 효과
+                document.querySelectorAll('.input-group input').forEach(input => {
+                    input.style.borderColor = '#ff4444';
+                });
+
+                setTimeout(() => {
+                    errorMsg.classList.remove('show');
+                    document.querySelectorAll('.input-group input').forEach(input => {
+                        input.style.borderColor = '#ddd';
+                    });
+                }, 3000);
+            }
+        }
+
+        // 숫자만 입력 가능하도록
+        document.getElementById('anniversary').addEventListener('input', function(e) {
+            this.value = this.value.replace(/[^0-9]/g, '');
+        });
+    </script>
+</body>
+</html>

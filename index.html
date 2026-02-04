@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>200일 기념 류동윤 모의고사 - 김나현 영역</title>
+    <link rel="stylesheet" href="style.css">
+    <script>
+        // 본인확인 체크
+        if (sessionStorage.getItem('verified') !== 'true') {
+            window.location.href = 'verify.html';
+        }
+    </script>
+</head>
+<body>
+    <div class="exam-container">
+        <header class="exam-header">
+            <div class="exam-info">
+                <p class="exam-year">2026학년도 200일 기념</p>
+                <h1 class="exam-title">류동윤 모의고사</h1>
+                <p class="exam-subject">김나현 영역</p>
+            </div>
+            <div class="exam-notice">
+                <p>◦ 본 시험은 200일 기념 특별 이벤트로 제작된 「류동윤은 김나현을 얼마나 잘 알고 있는가」 평가입니다.</p>
+                <p>◦ 수험자는 각 문항을 신중히 읽고, 김나현에 대한 정확한 이해를 바탕으로 답안을 선택하시기 바랍니다.</p>
+                <p>◦ 본 평가는 객관식 4지선다형으로 구성되어 있으며, 정답은 각 문항당 1개입니다.</p>
+                <p>◦ 시험 시간에는 김나현과의 추억, 감정, 디테일한 관찰 내용을 충분히 활용하시기 바랍니다.</p>
+                <p>◦ 본 시험 결과는 향후 관계 유지 및 애정 표현 능력 평가에 참고 자료로 활용될 수 있습니다.</p>
+            </div>
+            <div class="student-info">
+                <label>성명: <input type="text" id="studentName" placeholder="류동윤" readonly></label>
+                <label>수험번호: <input type="text" id="studentId" placeholder="20250722" readonly></label>
+            </div>
+        </header>
+        
+        <script>
+            // 본인확인에서 가져온 이름 자동 입력
+            const verifiedName = sessionStorage.getItem('studentName');
+            if (verifiedName) {
+                document.getElementById('studentName').value = verifiedName;
+            }
+            const verifiedId = sessionStorage.getItem('studentId');
+            if (verifiedId) {
+                document.getElementById('studentId').value = verifiedId;
+            }
+        </script>
+
+        <form id="examForm">
+            <div class="questions-container">
+                <!-- 1번 문제 -->
+                <div class="question-block">
+                    <div class="question-number">1</div>
+                    <div class="question-content">
+                        <p class="question-text">김나현의 생일은 언제인가?</p>
+                        <div class="options">
+                            <label class="option"><input type="radio" name="q1" value="1"> ① 1월 15일</label>
+                            <label class="option"><input type="radio" name="q1" value="2"> ② 3월 26일</label>
+                            <label class="option"><input type="radio" name="q1" value="3"> ③ 7월 19일</label>
+                            <label class="option"><input type="radio" name="q1" value="4"> ④ 12월 25일</label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2번 문제 -->
+                <div class="question-block">
+                    <div class="question-number">2</div>
+                    <div class="question-content">
+                        <p class="question-text">김나현이 가장 좋아하는 음식은?</p>
+                        <div class="options">
+                            <label class="option"><input type="radio" name="q2" value="1"> ① 피자</label>
+                            <label class="option"><input type="radio" name="q2" value="2"> ② 떡볶이</label>
+                            <label class="option"><input type="radio" name="q2" value="3"> ③ 마라탕</label>
+                            <label class="option"><input type="radio" name="q2" value="4"> ④ 치킨</label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3번 문제 -->
+                <div class="question-block">
+                    <div class="question-number">3</div>
+                    <div class="question-content">
+                        <p class="question-text">다음 &lt;보기&gt;에서 김나현이 서운함을 느꼈을 가능성이 가장 높은 것은?</p>
+                        <div class="box-info">
+                            <p class="box-title">&lt;보 기&gt;</p>
+                            <p>ㄱ.  답장이 평소보다 3시간 늦은 경우</p>
+                            <p>ㄴ. 아픈 것을 숨겼다가 들통날 경우</p>
+                            <p>ㄷ. 애정이 섞이지 않은 말을 들었을 때</p>
+                            <p>ㄹ. 사진을 잘 못 찍어줬을 경우</p>
+                        </div>
+                        <div class="options">
+                            <label class="option"><input type="radio" name="q3" value="1"> ① ㄴ</label>
+                            <label class="option"><input type="radio" name="q3" value="2"> ② ㄹ</label>
+                            <label class="option"><input type="radio" name="q3" value="3"> ③ ㄴ, ㄷ</label>
+                            <label class="option"><input type="radio" name="q3" value="4"> ④ ㄱ, ㄴ, ㄷ</label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 4번 문제 -->
+                <div class="question-block">
+                    <div class="question-number">4</div>
+                    <div class="question-content">
+                        <p class="question-text">다음 중 김나현이 가장 민감하게 반응할 가능성이 높은 것은?</p>
+                        <div class="options">
+                            <label class="option"><input type="radio" name="q4" value="1"> ① 전여친 이야기</label>
+                            <label class="option"><input type="radio" name="q4" value="2"> ② 류동윤의 건강 상태</label>
+                            <label class="option"><input type="radio" name="q4" value="3"> ③ 학업 관련</label>
+                            <label class="option"><input type="radio" name="q4" value="4"> ④ 정치 관련</label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 5번 문제 -->
+                <div class="question-block">
+                    <div class="question-number">5</div>
+                    <div class="question-content">
+                        <p class="question-text">다음 중 김나현의 정서적 만족도를 가장 크게 상승시킬 수 있는 행동은?</p>
+                        <div class="options">
+                            <label class="option"><input type="radio" name="q5" value="1"> ① 편지</label>
+                            <label class="option"><input type="radio" name="q5" value="2"> ② 사소한 취향을 기억하여 언급하는 것</label>
+                            <label class="option"><input type="radio" name="q5" value="3"> ③ 계획 없는 즉흥 방문</label>
+                            <label class="option"><input type="radio" name="q5" value="4"> ④ 본인 셀카</label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 6번 문제 -->
+                <div class="question-block">
+                    <div class="question-number">6</div>
+                    <div class="question-content">
+                        <p class="question-text">다음 &lt;보 기&gt에서 김나현의 간접적 애정 표현으로 볼 수 있는 것은?</p>
+                        <div class="box-info">
+                            <p class="box-title">&lt;보 기&gt;</p>
+                            <p>ㄱ. 깨물기와 같은 가벼운 상해</p>
+                            <p>ㄴ. 사소한 건강 상태를 반복적으로 확인하는 행위</p>
+                            <p>ㄷ. 눈 마주치면 웃기</p>
+                            <p>ㄹ. 스킨쉽</p>
+                        </div>
+                        <div class="options">
+                            <label class="option"><input type="radio" name="q6" value="1"> ① ㄱ</label>
+                            <label class="option"><input type="radio" name="q6" value="2"> ② ㄱ, ㄹ</label>
+                            <label class="option"><input type="radio" name="q6" value="3"> ③ ㄱ, ㄴ, ㄹ</label>
+                            <label class="option"><input type="radio" name="q6" value="4"> ④ ㄱ, ㄴ, ㄷ, ㄹ</label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 7번 문제  여기서부터 다시 시작~~~~~~~~-->
+                <div class="question-block">
+                    <div class="question-number">7</div>
+                    <div class="question-content">
+                        <p class="question-text">김나현이 가장 좋아하는 색깔은?</p>
+                        <div class="options">
+                            <label class="option"><input type="radio" name="q7" value="1"> ① 빨간색</label>
+                            <label class="option"><input type="radio" name="q7" value="2"> ② 파란색</label>
+                            <label class="option"><input type="radio" name="q7" value="3"> ③ 분홍색</label>
+                            <label class="option"><input type="radio" name="q7" value="4"> ④ 보라색</label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 8번 문제 -->
+                <div class="question-block">
+                    <div class="question-number">8</div>
+                    <div class="question-content">
+                        <p class="question-text">김나현이 싫어하는 것은?</p>
+                        <div class="options">
+                            <label class="option"><input type="radio" name="q8" value="1"> ① 벌레</label>
+                            <label class="option"><input type="radio" name="q8" value="2"> ② 높은 곳</label>
+                            <label class="option"><input type="radio" name="q8" value="3"> ③ 어두운 곳</label>
+                            <label class="option"><input type="radio" name="q8" value="4"> ④ 시끄러운 곳</label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 9번 문제 -->
+                <div class="question-block">
+                    <div class="question-number">9</div>
+                    <div class="question-content">
+                        <p class="question-text">김나현이 가장 좋아하는 동물은?</p>
+                        <div class="options">
+                            <label class="option"><input type="radio" name="q9" value="1"> ① 강아지</label>
+                            <label class="option"><input type="radio" name="q9" value="2"> ② 고양이</label>
+                            <label class="option"><input type="radio" name="q9" value="3"> ③ 토끼</label>
+                            <label class="option"><input type="radio" name="q9" value="4"> ④ 햄스터</label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 10번 문제 -->
+                <div class="question-block">
+                    <div class="question-number">10</div>
+                    <div class="question-content">
+                        <p class="question-text">김나현의 혈액형은?</p>
+                        <div class="options">
+                            <label class="option"><input type="radio" name="q10" value="1"> ① A형</label>
+                            <label class="option"><input type="radio" name="q10" value="2"> ② B형</label>
+                            <label class="option"><input type="radio" name="q10" value="3"> ③ O형</label>
+                            <label class="option"><input type="radio" name="q10" value="4"> ④ AB형</label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 11번 문제 -->
+                <div class="question-block">
+                    <div class="question-number">11</div>
+                    <div class="question-content">
+                        <p class="question-text">우리의 기념일은 언제인가?</p>
+                        <div class="options">
+                            <label class="option"><input type="radio" name="q11" value="1"> ① 5월 20일</label>
+                            <label class="option"><input type="radio" name="q11" value="2"> ② 7월 18일</label>
+                            <label class="option"><input type="radio" name="q11" value="3"> ③ 9월 10일</label>
+                            <label class="option"><input type="radio" name="q11" value="4"> ④ 11월 25일</label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 12번 문제 -->
+                <div class="question-block">
+                    <div class="question-number">12</div>
+                    <div class="question-content">
+                        <p class="question-text">김나현이 자주 하는 말버릇은?</p>
+                        <div class="options">
+                            <label class="option"><input type="radio" name="q12" value="1"> ① "진짜?"</label>
+                            <label class="option"><input type="radio" name="q12" value="2"> ② "아 몰라~"</label>
+                            <label class="option"><input type="radio" name="q12" value="3"> ③ "귀여워"</label>
+                            <label class="option"><input type="radio" name="q12" value="4"> ④ "대박"</label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 13번 문제 -->
+                <div class="question-block">
+                    <div class="question-number">13</div>
+                    <div class="question-content">
+                        <p class="question-text">김나현이 가장 좋아하는 카페 음료는?</p>
+                        <div class="options">
+                            <label class="option"><input type="radio" name="q13" value="1"> ① 아메리카노</label>
+                            <label class="option"><input type="radio" name="q13" value="2"> ② 바닐라 라떼</label>
+                            <label class="option"><input type="radio" name="q13" value="3"> ③ 딸기 스무디</label>
+                            <label class="option"><input type="radio" name="q13" value="4"> ④ 녹차 라떼</label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 14번 문제 -->
+                <div class="question-block">
+                    <div class="question-number">14</div>
+                    <div class="question-content">
+                        <p class="question-text">김나현의 발 사이즈는?</p>
+                        <div class="options">
+                            <label class="option"><input type="radio" name="q14" value="1"> ① 225mm</label>
+                            <label class="option"><input type="radio" name="q14" value="2"> ② 235mm</label>
+                            <label class="option"><input type="radio" name="q14" value="3"> ③ 240mm</label>
+                            <label class="option"><input type="radio" name="q14" value="4"> ④ 245mm</label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 15번 문제 -->
+                <div class="question-block">
+                    <div class="question-number">15</div>
+                    <div class="question-content">
+                        <p class="question-text">김나현이 가장 좋아하는 영화 장르는?</p>
+                        <div class="options">
+                            <label class="option"><input type="radio" name="q15" value="1"> ① 로맨스</label>
+                            <label class="option"><input type="radio" name="q15" value="2"> ② 액션</label>
+                            <label class="option"><input type="radio" name="q15" value="3"> ③ 공포</label>
+                            <label class="option"><input type="radio" name="q15" value="4"> ④ 코미디</label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 16번 문제 -->
+                <div class="question-block">
+                    <div class="question-number">16</div>
+                    <div class="question-content">
+                        <p class="question-text">김나현이 스트레스 받을 때 하는 행동은?</p>
+                        <div class="options">
+                            <label class="option"><input type="radio" name="q16" value="1"> ① 잠자기</label>
+                            <label class="option"><input type="radio" name="q16" value="2"> ② 맛있는 거 먹기</label>
+                            <label class="option"><input type="radio" name="q16" value="3"> ③ 쇼핑하기</label>
+                            <label class="option"><input type="radio" name="q16" value="4"> ④ 노래 듣기</label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 17번 문제 -->
+                <div class="question-block">
+                    <div class="question-number">17</div>
+                    <div class="question-content">
+                        <p class="question-text">김나현이 가장 좋아하는 라면은?</p>
+                        <div class="options">
+                            <label class="option"><input type="radio" name="q17" value="1"> ① 신라면</label>
+                            <label class="option"><input type="radio" name="q17" value="2"> ② 진라면</label>
+                            <label class="option"><input type="radio" name="q17" value="3"> ③ 불닭볶음면</label>
+                            <label class="option"><input type="radio" name="q17" value="4"> ④ 짜파게티</label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 18번 문제 -->
+                <div class="question-block">
+                    <div class="question-number">18</div>
+                    <div class="question-content">
+                        <p class="question-text">김나현의 잠버릇은?</p>
+                        <div class="options">
+                            <label class="option"><input type="radio" name="q18" value="1"> ① 코골이</label>
+                            <label class="option"><input type="radio" name="q18" value="2"> ② 잠꼬대</label>
+                            <label class="option"><input type="radio" name="q18" value="3"> ③ 이불 발로 차기</label>
+                            <label class="option"><input type="radio" name="q18" value="4"> ④ 없음</label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 19번 문제 -->
+                <div class="question-block">
+                    <div class="question-number">19</div>
+                    <div class="question-content">
+                        <p class="question-text">김나현이 가장 좋아하는 아이스크림 맛은?</p>
+                        <div class="options">
+                            <label class="option"><input type="radio" name="q19" value="1"> ① 초코</label>
+                            <label class="option"><input type="radio" name="q19" value="2"> ② 바닐라</label>
+                            <label class="option"><input type="radio" name="q19" value="3"> ③ 딸기</label>
+                            <label class="option"><input type="radio" name="q19" value="4"> ④ 민트초코</label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 20번 문제 -->
+                <div class="question-block">
+                    <div class="question-number">20</div>
+                    <div class="question-content">
+                        <p class="question-text">김나현이 아침형 인간인가 저녁형 인간인가?</p>
+                        <div class="options">
+                            <label class="option"><input type="radio" name="q20" value="1"> ① 완전 아침형</label>
+                            <label class="option"><input type="radio" name="q20" value="2"> ② 약간 아침형</label>
+                            <label class="option"><input type="radio" name="q20" value="3"> ③ 약간 저녁형</label>
+                            <label class="option"><input type="radio" name="q20" value="4"> ④ 완전 저녁형</label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 21번 문제 -->
+                <div class="question-block">
+                    <div class="question-number">21</div>
+                    <div class="question-content">
+                        <p class="question-text">김나현이 가장 좋아하는 과일은?</p>
+                        <div class="options">
+                            <label class="option"><input type="radio" name="q21" value="1"> ① 딸기</label>
+                            <label class="option"><input type="radio" name="q21" value="2"> ② 수박</label>
+                            <label class="option"><input type="radio" name="q21" value="3"> ③ 복숭아</label>
+                            <label class="option"><input type="radio" name="q21" value="4"> ④ 포도</label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 22번 문제 -->
+                <div class="question-block">
+                    <div class="question-number">22</div>
+                    <div class="question-content">
+                        <p class="question-text">김나현의 키는 얼마인가?</p>
+                        <div class="options">
+                            <label class="option"><input type="radio" name="q22" value="1"> ① 155cm</label>
+                            <label class="option"><input type="radio" name="q22" value="2"> ② 160cm</label>
+                            <label class="option"><input type="radio" name="q22" value="3"> ③ 165cm</label>
+                            <label class="option"><input type="radio" name="q22" value="4"> ④ 170cm</label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 23번 문제 -->
+                <div class="question-block">
+                    <div class="question-number">23</div>
+                    <div class="question-content">
+                        <p class="question-text">김나현이 좋아하는 꽃은?</p>
+                        <div class="options">
+                            <label class="option"><input type="radio" name="q23" value="1"> ① 장미</label>
+                            <label class="option"><input type="radio" name="q23" value="2"> ② 튤립</label>
+                            <label class="option"><input type="radio" name="q23" value="3"> ③ 해바라기</label>
+                            <label class="option"><input type="radio" name="q23" value="4"> ④ 벚꽃</label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 24번 문제 -->
+                <div class="question-block">
+                    <div class="question-number">24</div>
+                    <div class="question-content">
+                        <p class="question-text">김나현이 가장 듣고 싶은 말은?</p>
+                        <div class="options">
+                            <label class="option"><input type="radio" name="q24" value="1"> ① "사랑해"</label>
+                            <label class="option"><input type="radio" name="q24" value="2"> ② "예쁘다"</label>
+                            <label class="option"><input type="radio" name="q24" value="3"> ③ "잘했어"</label>
+                            <label class="option"><input type="radio" name="q24" value="4"> ④ "고마워"</label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 25번 문제 -->
+                <div class="question-block">
+                    <div class="question-number">25</div>
+                    <div class="question-content">
+                        <p class="question-text">김나현이 여행가고 싶은 나라는?</p>
+                        <div class="options">
+                            <label class="option"><input type="radio" name="q25" value="1"> ① 일본</label>
+                            <label class="option"><input type="radio" name="q25" value="2"> ② 프랑스</label>
+                            <label class="option"><input type="radio" name="q25" value="3"> ③ 스페인</label>
+                            <label class="option"><input type="radio" name="q25" value="4"> ④ 미국</label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 26번 문제 -->
+                <div class="question-block">
+                    <div class="question-number">26</div>
+                    <div class="question-content">
+                        <p class="question-text">김나현이 가장 좋아하는 반찬은?</p>
+                        <div class="options">
+                            <label class="option"><input type="radio" name="q26" value="1"> ① 계란말이</label>
+                            <label class="option"><input type="radio" name="q26" value="2"> ② 김치</label>
+                            <label class="option"><input type="radio" name="q26" value="3"> ③ 멸치볶음</label>
+                            <label class="option"><input type="radio" name="q26" value="4"> ④ 잡채</label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 27번 문제 -->
+                <div class="question-block">
+                    <div class="question-number">27</div>
+                    <div class="question-content">
+                        <p class="question-text">김나현의 별명은?</p>
+                        <div class="options">
+                            <label class="option"><input type="radio" name="q27" value="1"> ① 나나</label>
+                            <label class="option"><input type="radio" name="q27" value="2"> ② 현이</label>
+                            <label class="option"><input type="radio" name="q27" value="3"> ③ 김나</label>
+                            <label class="option"><input type="radio" name="q27" value="4"> ④ 나현공주</label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 28번 문제 -->
+                <div class="question-block">
+                    <div class="question-number">28</div>
+                    <div class="question-content">
+                        <p class="question-text">김나현이 화났을 때 보이는 행동은?</p>
+                        <div class="options">
+                            <label class="option"><input type="radio" name="q28" value="1"> ① 말이 없어진다</label>
+                            <label class="option"><input type="radio" name="q28" value="2"> ② 소리를 지른다</label>
+                            <label class="option"><input type="radio" name="q28" value="3"> ① 삐진 티를 낸다</label>
+                            <label class="option"><input type="radio" name="q28" value="4"> ④ 우는 척한다</label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 29번 문제 -->
+                <div class="question-block">
+                    <div class="question-number">29</div>
+                    <div class="question-content">
+                        <p class="question-text">김나현이 가장 소중하게 생각하는 것은?</p>
+                        <div class="options">
+                            <label class="option"><input type="radio" name="q29" value="1"> ① 가족</label>
+                            <label class="option"><input type="radio" name="q29" value="2"> ② 친구</label>
+                            <label class="option"><input type="radio" name="q29" value="3"> ③ 연인(류동윤)</label>
+                            <label class="option"><input type="radio" name="q29" value="4"> ④ 위의 모두</label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 30번 문제 -->
+                <div class="question-block">
+                    <div class="question-number">30</div>
+                    <div class="question-content">
+                        <p class="question-text">다음 중 김나현이 류동윤에게 바라는 것은?</p>
+                        <div class="options">
+                            <label class="option"><input type="radio" name="q30" value="1"> ① 매일 연락하기</label>
+                            <label class="option"><input type="radio" name="q30" value="2"> ② 자주 만나기</label>
+                            <label class="option"><input type="radio" name="q30" value="3"> ③ 오래오래 함께하기</label>
+                            <label class="option"><input type="radio" name="q30" value="4"> ④ 위의 모두 ♥</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="submit-section">
+                <p class="submit-notice">※ 모든 문제를 다 풀었는지 확인하세요.</p>
+                <button type="submit" class="submit-btn">답안 제출하기</button>
+            </div>
+        </form>
+
+        <div id="resultModal" class="modal">
+            <div class="modal-content">
+                <h2>📝 채점 결과</h2>
+                <div id="resultContent"></div>
+                <button onclick="closeModal()" class="close-btn">닫기</button>
+            </div>
+        </div>
+
+        <footer class="exam-footer">
+            <p>※ 본 문제지는 200일 기념 특별판입니다. 사랑해요 김나현 ♥</p>
+            <p>- 문의 사항은 류동윤에게 연락주세요 -</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
