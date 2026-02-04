@@ -6,7 +6,7 @@ const correctAnswers = {
     q4: "3",   // 민감하게 반응
     q5: "1",   // 정서적 만족도
     q6: "4",   // 간접적 애정 표현
-    q7: "1",   // 민감하게 반응
+    q7: "2",   // 스트레스 해소 방법
     q8: "4",   // 삐졌을 때 1차 반응
     q9: "2",   // 기억에 오래 남을 행동
     q10: "3",  // 연애에서 중요한 요소
@@ -19,8 +19,11 @@ const correctAnswers = {
     q17: "1",  // 서운함 느꼈을 때 해결 방식
     q18: "3",  // 발 사이즈
     q19: "1",  // 화났을 때 행동
-    q20: "4"   // 류동윤에게 바라는 것
+    q20: "4"   // 200일 관계 유지 이유
 };
+
+// 채점 완료 상태
+let isGraded = false;
 
 // 등급 메시지
 function getGradeMessage(score) {
@@ -42,10 +45,87 @@ function getGradeMessage(score) {
     }
 }
 
+// 문제별 정답/오답 표시
+function showAnswerResults() {
+    for (let i = 1; i <= 20; i++) {
+        const questionName = `q${i}`;
+        const questionBlock = document.querySelectorAll('.question-block')[i - 1];
+        const selectedOption = document.querySelector(`input[name="${questionName}"]:checked`);
+        const correctAnswer = correctAnswers[questionName];
+        
+        // 모든 옵션에서 기존 상태 제거
+        const allOptions = questionBlock.querySelectorAll('.option');
+        allOptions.forEach(opt => {
+            opt.classList.remove('correct', 'wrong', 'correct-answer');
+        });
+        
+        // 정답 옵션 찾기
+        const correctOption = questionBlock.querySelector(`input[name="${questionName}"][value="${correctAnswer}"]`);
+        if (correctOption) {
+            correctOption.closest('.option').classList.add('correct-answer');
+        }
+        
+        if (selectedOption) {
+            const parentOption = selectedOption.closest('.option');
+            if (selectedOption.value === correctAnswer) {
+                // 정답
+                questionBlock.classList.add('answered-correct');
+                questionBlock.classList.remove('answered-wrong');
+                parentOption.classList.add('correct');
+            } else {
+                // 오답
+                questionBlock.classList.add('answered-wrong');
+                questionBlock.classList.remove('answered-correct');
+                parentOption.classList.add('wrong');
+            }
+        } else {
+            // 미응답
+            questionBlock.classList.add('answered-wrong');
+            questionBlock.classList.remove('answered-correct');
+        }
+        
+        // 라디오 버튼 비활성화
+        allOptions.forEach(opt => {
+            const radio = opt.querySelector('input[type="radio"]');
+            radio.disabled = true;
+        });
+    }
+}
+
+// 시험 리셋
+function resetExam() {
+    isGraded = false;
+    
+    // 모든 문제 블록에서 정답/오답 클래스 제거
+    document.querySelectorAll('.question-block').forEach(block => {
+        block.classList.remove('answered-correct', 'answered-wrong');
+    });
+    
+    // 모든 옵션에서 상태 제거 및 라디오 버튼 활성화
+    document.querySelectorAll('.option').forEach(opt => {
+        opt.classList.remove('correct', 'wrong', 'correct-answer');
+        const radio = opt.querySelector('input[type="radio"]');
+        radio.disabled = false;
+        radio.checked = false;
+    });
+    
+    // 버튼 텍스트 변경
+    const submitBtn = document.querySelector('.submit-btn');
+    submitBtn.textContent = '답안 제출하기';
+    
+    // 페이지 상단으로 스크롤
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
 
 // 폼 제출 처리
 document.getElementById('examForm').addEventListener('submit', function(e) {
     e.preventDefault();
+    
+    // 이미 채점된 상태면 리셋
+    if (isGraded) {
+        resetExam();
+        return;
+    }
     
     let score = 0;
     let unanswered = [];
@@ -85,11 +165,26 @@ document.getElementById('examForm').addEventListener('submit', function(e) {
     
     // 모달 표시
     document.getElementById('resultModal').classList.add('show');
+    
+    // 채점 상태 저장
+    isGraded = true;
 });
 
 // 모달 닫기
 function closeModal() {
     document.getElementById('resultModal').classList.remove('show');
+    
+    // 채점 완료 상태면 정답/오답 표시 및 버튼 변경
+    if (isGraded) {
+        showAnswerResults();
+        
+        // 버튼 텍스트 변경
+        const submitBtn = document.querySelector('.submit-btn');
+        submitBtn.textContent = '다시 풀기';
+        
+        // 첫 번째 문제로 스크롤
+        document.querySelector('.question-block').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
 }
 
 // 모달 외부 클릭시 닫기

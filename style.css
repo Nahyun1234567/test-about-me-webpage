@@ -428,3 +428,83 @@ body {
         padding: 5px 0;
     }
 }
+
+/* 정답/오답 표시 스타일 */
+.question-block.answered-correct .question-number {
+    background-color: #4CAF50;
+}
+
+.question-block.answered-wrong .question-number {
+    background-color: #f44336;
+}
+
+/* 정답 옵션 스타일 */
+.option.correct {
+    background-color: #e8f5e9 !important;
+    border-color: #4CAF50 !important;
+}
+
+.option.correct .number {
+    background-color: #4CAF50 !important;
+    border-color: #4CAF50 !important;
+    color: #fff !important;
+}
+
+/* 오답 옵션 스타일 */
+.option.wrong {
+    background-color: #ffebee !important;
+    border-color: #f44336 !important;
+}
+
+.option.wrong .number {
+    background-color: #f44336 !important;
+    border-color: #f44336 !important;
+    color: #fff !important;
+}
+
+/* 실제 정답 표시 (틀렸을 때 정답 보여주기) */
+.option.correct-answer {
+    border: 2px dashed #4CAF50 !important;
+}
+
+.option.correct-answer::after {
+    content: '정답';
+    position: absolute;
+    right: 10px;
+    background-color: #4CAF50;
+    color: white;
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+/* 채점 후 비활성화 스타일 */
+.option:has(input[type="radio"]:disabled) {
+    cursor: default;
+}
+
+.option:has(input[type="radio"]:disabled):hover {
+    background-color: inherit;
+    border-color: inherit;
+}
+
+.option.correct:has(input[type="radio"]:disabled):hover {
+    background-color: #e8f5e9 !important;
+    border-color: #4CAF50 !important;
+}
+
+.option.wrong:has(input[type="radio"]:disabled):hover {
+    background-color: #ffebee !important;
+    border-color: #f44336 !important;
+}
+
+/* 다시 풀기 버튼 스타일 */
+.submit-btn.reset {
+    background: linear-gradient(135deg, #666 0%, #888 100%);
+    box-shadow: 0 4px 15px rgba(100, 100, 100, 0.4);
+}
+
+.submit-btn.reset:hover {
+    box-shadow: 0 6px 20px rgba(100, 100, 100, 0.5);
+}
