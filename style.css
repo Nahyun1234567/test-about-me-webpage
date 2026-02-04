@@ -463,11 +463,11 @@ body {
 }
 
 /* 실제 정답 표시 (틀렸을 때 정답 보여주기) */
-.option.correct-answer {
+.option.correct-answer:not(.correct) {
     border: 2px dashed #4CAF50 !important;
 }
 
-.option.correct-answer::after {
+.option.correct-answer:not(.correct)::after {
     content: '정답';
     position: absolute;
     right: 10px;
@@ -477,6 +477,11 @@ body {
     border-radius: 10px;
     font-size: 12px;
     font-weight: 500;
+}
+
+/* 정답을 맞혔을 때는 실선 */
+.option.correct.correct-answer {
+    border: 2px solid #4CAF50 !important;
 }
 
 /* 채점 후 비활성화 스타일 */
